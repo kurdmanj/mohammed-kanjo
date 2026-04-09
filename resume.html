@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Sadeq Kanjo | Operations Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #c9a227;
+            --accent-hover: #e0b93a;
+            --text: #f5f5f5;
+            --text-muted: #888;
+            --border: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Metrics Strip */
+        .metrics-strip {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .metric-desc {
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: var(--secondary);
+        }
+
+        .case-studies .section-header {
+            text-align: center;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .case-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .case-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .case-company {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .case-metric {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .case-metric-value {
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            color: var(--text);
+        }
+
+        .timeline-company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Skills Grid */
+        .skills-section {
+            background: var(--secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Arsenal Section */
+        .arsenal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .arsenal-item {
+            padding: 2rem;
+            background: var(--secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .arsenal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .arsenal-name {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .arsenal-level {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arsenal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MSK.</div>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#cases">Case Studies</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+        </div>
+        <a href="#contact" class="cta-btn">Let's Talk</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Operations Architect & Systems Builder</span>
+            <h1>Mohammed Sadeq Kanjo</h1>
+            <p class="hero-subtitle">I transform operational chaos into revenue-generating precision engines.</p>
+            <p class="hero-description">
+                Strategic leader specializing in high-scale logistics optimization, intelligent automation, and team performance architecture. 
+                Built systems that eliminated 45% of manual overhead while increasing revenue retention for market-leading delivery platforms.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">$50K+</span>
+                    <div class="stat-label">Annual Revenue Leakage Prevented</div>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">45%</span>
+                    <div class="stat-label">Manual Audit Time Eliminated</div>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">36</span>
+                    <div class="stat-label">Vehicle Fleet Optimized</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Strip -->
+    <div class="metrics-strip">
+        <div class="metric-item">
+            <div class="metric-value">30%</div>
+            <div class="metric-desc">Team Productivity Increase</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">25%</div>
+            <div class="metric-desc">Faster Order Turnaround</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">40%</div>
+            <div class="metric-desc">Delivery Errors Reduced</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">15%</div>
+            <div class="metric-desc">Operational Cost Reduction</div>
+        </div>
+    </div>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="cases">
+        <div class="section-header">
+            <span class="section-label">Proof of Work</span>
+            <h2 class="section-title">Strategic Operations Delivered</h2>
+        </div>
+
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-icon">⚡</div>
+                <h3 class="case-title">The Intelligence Layer</h3>
+                <div class="case-company">Eagle Post | 2024-Present</div>
+                <p class="case-desc">
+                    Architected bespoke internal diagnostic tools using Python and GitHub Copilot to bridge critical gaps in legacy logistics software. Created real-time performance visibility across all branch operations.
+                </p>
+                <div class="case-metrics">
+                    <div class="case-metric">
+                        <span class="case-metric-value">45%</span>
+                        <span>audit time↓</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">Real-time</span>
+                        <span>visibility</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">5%</span>
+                        <span>revenue↑</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-icon">🚛</div>
+                <h3 class="case-title">Fleet Optimization Engine</h3>
+                <div class="case-company">Lezzoo | 2022-2023</div>
+                <p class="case-desc">
+                    Directed 36-vehicle fleet operations with telematics-driven deployment strategy. Negotiated maintenance contracts and implemented fuel efficiency protocols for maximum revenue-generating uptime.
+                </p>
+                <div class="case-metrics">
+                    <div class="case-metric">
+                        <span class="case-metric-value">15%</span>
+                        <span>cost reduction</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">20%</span>
+                        <span>availability↑</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">10%</span>
+                        <span>fuel efficiency↑</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-icon">🎯</div>
+                <h3 class="case-title">Precision Logistics System</h3>
+                <div class="case-company">Toters | 2023-2024</div>
+                <p class="case-desc">
+                    Pioneered AI-enhanced task prioritization system that revolutionized order fulfillment workflows. Investigated shipping discrepancies using OMS data analytics to seal revenue leaks.
+                </p>
+                <div class="case-metrics">
+                    <div class="case-metric">
+                        <span class="case-metric-value">25%</span>
+                        <span>turnaround↑</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">$50K</span>
+                        <span>saved annually</span>
+                    </div>
+                    <div class="case-metric">
+                        <span class="case-metric-value">40%</span>
+                        <span>errors↓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+        <div class="section-header">
+            <span class="section-label">Career Trajectory</span>
+            <h2 class="section-title">Leadership Experience</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Customer Operations Architect</h3>
+                        <div class="timeline-company">Eagle Post, Erbil</div>
+                    </div>
+                    <span class="timeline-date">2024 — Present</span>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Leveraged Python and AI (Copilot) to architect internal tools ensuring data integrity across all logistics touchpoints</li>
+                        <li>Established "Master Curriculum" onboarding system ensuring peak service quality from day one</li>
+                        <li>Developed proprietary automation eliminating manual repetition, driving 5% revenue lift from optimized upsells</li>
+                        <li>Standardized cross-branch operational benchmarks for unified brand presence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Order Fulfillment & Logistics Lead</h3>
+                        <div class="timeline-company">Toters, Erbil</div>
+                    </div>
+                    <span class="timeline-date">2023 — 2024</span>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Pioneered task prioritization system improving turnaround time by 25%, directly increasing customer retention</li>
+                        <li>Investigated and rectified shipping discrepancies using OMS data, preventing $50,000 in annual revenue leakage</li>
+                        <li>Transformed underperforming agents into high-output assets through structured coaching and performance architecture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Fleet Operations Commander</h3>
+                        <div class="timeline-company">Lezzoo, Erbil</div>
+                    </div>
+                    <span class="timeline-date">2022 — 2023</span>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Directed 36-vehicle fleet with focus on maximum revenue-generating uptime and strategic deployment</li>
+                        <li>Negotiated maintenance and procurement contracts permanently lowering operational cost by 15%</li>
+                        <li>Improved fuel efficiency by 10% and fleet availability by 20% through telematics-driven decision making</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section class="skills-section" id="skills">
+        <div class="section-header">
+            <span class="section-label">Technical Arsenal</span>
+            <h2 class="section-title">Tools & Technologies</h2>
+        </div>
+
+        <div class="arsenal-grid">
+            <div class="arsenal-item">
+                <div class="arsenal-icon">🐍</div>
+                <div class="arsenal-name">Python</div>
+                <div class="arsenal-level">Automation & Analytics</div>
+            </div>
+            <div class="arsenal-item">
+                <div class="arsenal-icon">🤖</div>
+                <div class="arsenal-name">GitHub Copilot</div>
+                <div class="arsenal-level">AI-Assisted Development</div>
+            </div>
+            <div class="arsenal-item">
+                <div class="arsenal-icon">📊</div>
+                <div class="arsenal-name">Google Apps Script</div>
+                <div class="arsenal-level">Workflow Automation</div>
+            </div>
+            <div class="arsenal-item">
+                <div class="arsenal-icon">📡</div>
+                <div class="arsenal-name">Telematics Systems</div>
+                <div class="arsenal-level">Fleet Optimization</div>
+            </div>
+        </div>
+
+        <div class="skills-grid" style="margin-top: 4rem;">
+            <div class="skill-category">
+                <h3>Strategic Leadership</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Team Mentoring</span>
+                    <span class="skill-tag">Performance Management</span>
+                    <span class="skill-tag">Change Management</span>
+                    <span class="skill-tag">Cross-functional Leadership</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Business Development</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Partnership Building</span>
+                    <span class="skill-tag">Contract Negotiation</span>
+                    <span class="skill-tag">Key Account Management</span>
+                    <span class="skill-tag">Vendor Management</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Operational Excellence</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Process Optimization</span>
+                    <span class="skill-tag">KPI Analysis</span>
+                    <span class="skill-tag">Data-Driven Decisions</span>
+                    <span class="skill-tag">Quality Assurance</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Multilingual Operations</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">English (Business)</span>
+                    <span class="skill-tag">Arabic (Native)</span>
+                    <span class="skill-tag">Kurdish/Sorani (Native)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continuous Learning -->
+    <section>
+        <div class="section-header">
+            <span class="section-label">Education & Development</span>
+            <h2 class="section-title">Continuous Learning Path</h2>
+        </div>
+
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-icon">🎓</div>
+                <h3 class="case-title">Self-Directed Technical Mastery</h3>
+                <div class="case-company">2022 — Present</div>
+                <p class="case-desc">
+                    Intensive self-study in Python automation, data analytics, and AI-assisted development. Built production-grade internal tools without formal CS education, demonstrating rapid learning capability and technical autodidactism.
+                </p>
+            </div>
+            <div class="case-card">
+                <div class="case-icon">📜</div>
+                <h3 class="case-title">Professional Certifications</h3>
+                <div class="case-company">Erbil, Iraq</div>
+                <p class="case-desc">
+                    • IT3 Certificate<br>
+                    • CAITL Certificate<br>
+                    • English Language Certificate<br>
+                    • Life Skills Certificate
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2 class="contact-title">Ready to Scale Your Operations?</h2>
+        <p class="contact-subtitle">Seeking strategic leadership roles with high-growth, high-compensation organizations.</p>
+
+        <div class="contact-links">
+            <a href="mailto:mkanjo@USA.com" class="contact-link">
+                <span>📧</span> mkanjo@USA.com
+            </a>
+            <a href="tel:+9647510541186" class="contact-link">
+                <span>📞</span> +964 751 054 1186
+            </a>
+            <a href="https://www.linkedin.com/in/ganjo/" target="_blank" class="contact-link">
+                <span>💼</span> LinkedIn Profile
+            </a>
+        </div>
+
+        <div style="margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">
+            📍 Based in Erbil, Iraq | Available for relocation & remote leadership roles
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Mohammed Sadeq Kanjo. Operations Architect.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Built with precision. Designed for impact.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.case-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
